@@ -1,0 +1,52 @@
+{
+  "export default": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "ed",
+    "body": "export default "
+  },
+  "export { default } from \"...\"": {
+    "scope": "javascript,typescript",
+    "prefix": "ReExport",
+    "body": "export { default } from \"$1\""
+  },
+  "children: React.ReactNode": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "children",
+    "body": "children: React.ReactNode"
+  },
+  "useState": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "usestate",
+    "body": "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState($2)"
+  },
+  "React 関数コンポーネント": {
+    "scope": "typescriptreact",
+    "prefix": "fc",
+    "body": [
+      "const ${1:${TM_FILENAME_BASE/[\\.].+//}} = () => {",
+      "  return (",
+      "    ${2:<></>}",
+      "  )",
+      "}",
+      "",
+      "export default $1"
+    ]
+  },
+  "React 関数コンポーネント props あり": {
+    "scope": "typescriptreact",
+    "prefix": "fcprops",
+    "body": [
+      "type Props = {",
+      "  $2",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE/[\\.].+//}} = ({$3}: Props) => {",
+      "  return (",
+      "    ${4:<></>}",
+      "  )",
+      "}",
+      "",
+      "export default $1"
+    ]
+  }
+}
